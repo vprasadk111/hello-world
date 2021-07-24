@@ -14,14 +14,15 @@ pipeline {
               sh "mvn clean install"
             }
         }
-        /** stage("deploy"){
+         stage("deploy"){
             steps{
-              sshagent(['deploy_user']) {
-                 sh "scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@13.229.183.126:/opt/apache-tomcat-8.5.55/webapps"
+              sshagent(['deployuser']) {
+                 sh "scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@172.31.12.181:/home/ec2-user/TOMCAT/apache-tomcat-9.0.50/webapps"
+                 echo "Files copied successfully !!!!"
                  
                 }
             }
         
-        }**/
+        }
     }
 }
